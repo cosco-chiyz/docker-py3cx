@@ -31,7 +31,7 @@ The `instantclient` looks like this.
 
 ```bash
 
-docker run -it --rm -v $(pwd)/instantclient:/data/instantclient bonashen/docker-py3cx bash 
+docker run -it --rm -v $(pwd)/instantclient:/data/instantclient bonashen/py3cx bash 
 
 ```
 
@@ -42,7 +42,7 @@ Dockerfile looks like this.
 
 ```Dockerfile
 
-FROM bonashen/docker-py3cx
+FROM bonashen/py3cx
 
 MAINTAINER yourname yourname@mail.com
 
