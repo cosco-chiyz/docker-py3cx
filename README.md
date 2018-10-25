@@ -9,32 +9,23 @@ download instantclient zip file from [oracle](https://www.oracle.com/technetwork
 
 unzip instantclient.zip to `instantclient` directory .
 
-create `tnsnames.ora` in `instantclient/network/admin` directory.
-
-this is example of `tnsnames.ora` file:
-
+The `instantclient` looks like this.
 ```text
-
-ORCL =
-
-(DESCRIPTION =
-
-        (ADDRESS_LIST =
-
-                  (ADDRESS = (PROTOCOL = TCP)(HOST = your oracle server ip or name )(PORT = 1521))
-
-        )
-
-        (CONNECT_DATA =
-
-                (SERVICE_NAME = ORCL)
-
-        )
-
-)
-
-
+.
+├── adrci
+├── BASIC_README
+├── genezi
+├── libclntsh.so.11.1
+├── libnnz11.so
+├── libocci.so.11.1
+├── libociei.so
+├── libocijdbc11.so
+├── ojdbc5.jar
+├── ojdbc6.jar
+├── uidrvci
+└── xstreams.jar
 ```
+
 
 ### 2. run docker container for test
 
@@ -66,6 +57,11 @@ CMD ["python3"]
 ```
 
 
-build custom image and run custom image.
+build custom image
 
-if you use in production env, don't forgot modify `tnsnames.ora` file.
+```bash
+
+docker build -t yourname/custom .
+
+```
+
