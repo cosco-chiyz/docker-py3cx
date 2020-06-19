@@ -1,0 +1,23 @@
+FROM python:3.7
+
+MAINTAINER tony cn.tony@outlook.com
+
+ENV DEBIAN_FRONTEND noninteractive
+
+WORKDIR  /app
+
+RUN wget https://download.oracle.com/otn_software/linux/instantclient/19600/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip
+
+RUN unzip /app/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip  \
+  && rm -rf /app/instantclient-basic-linux.x64-19.6.0.0.0dbru.zip
+
+ENV LD_LIBRARY_PATH /app/instantclient_19_6
+ENV path $LD_LIBRARY_PATH:$path
+ENV NLS_LANGE "SIMPLIFIED CHINESE_CHINA.ZHS16GBK"
+
+RUN apt-get install libaio1
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+CMD ["python3"]
